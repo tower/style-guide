@@ -175,6 +175,18 @@
     ['i386', 'x86_64']
     {status: 'active'}
     ```
+- Avoid aligning signs such as `=`, `:`, etc. The reason is, while it does create some symmetry, it makes the code harder to read a little.
+    ```js
+    // true
+    var x = 1;
+    var foo = 'bar';
+    var hello = 'world';
+
+    // false
+    var x     = 1;
+    var foo   = 'bar';
+    var hello = 'world';
+    ```
 
 ## Events
 
