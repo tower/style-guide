@@ -149,7 +149,7 @@
 
 - For loops should be as efficient and clean as possible. Even though the performance benefit most of the time is extremely minimal if at all.
 
-   ```javascript
+   ```js
    for (var i = 0, n = arr.length; i < n; i++) {}
    ```
 
@@ -157,7 +157,7 @@
 
 - For each loops (for loops but with objects) should have safe guards, which is a general good JavaScript practice.
   
-   ```javascript
+   ```js
    for (var key in obj) {
      if (obj.hasOwnProperty(key)) {
   
