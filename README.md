@@ -187,6 +187,40 @@
     var foo   = 'bar';
     var hello = 'world';
     ```
+- If ternary statement is too long, put it on multiple lines with `?` and `:` at the start of the line.
+    ```js
+    // true
+    exports.query = function(name){
+      return null == name
+        ? query().start(this.className)
+        : query(name);
+    }
+
+    // false
+    exports.query = function(name){
+      return null == name ?
+        query().start(this.className) :
+        query(name);
+    }
+    ```
+- If you're building a multiline string, use `+` at the beginning of the line.
+    ```js
+    // true
+    var string = 'some '
+      + 'long '
+      + 'string ';
+
+    // false
+    var string = 'some ' +
+      'long ' +
+      'string ';
+
+    // false
+    var string = 'some \
+      long \
+      string ';
+    ```
+    In EcmaScript 6, you'll be able to use [backticks for multi-line strings](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml?showone=Multiline_string_literals#Multiline_string_literals).
 
 ## Events
 
