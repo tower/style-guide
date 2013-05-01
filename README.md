@@ -14,6 +14,20 @@
       this.x;
     };
     ```
+- For callback functions, do the same thing.
+    ```js
+    // true
+    route('/users')
+      .on('exec', function(){
+
+      });
+    
+    // false
+    route('/users')
+      .on('exec', function() {
+
+      });
+    ```
 - For non-assigned functions, do it the other way around:
     ```js
     // true
@@ -27,6 +41,32 @@
     };
     ```
     The reason for this is readability and for the mind to quickly grasp what type of function it is. It's subtle but it makes the code much easier to grasp for some strange reason.
+- Indent DSL methods if they are in a new object scope.
+    ```js
+    // true
+    adapter('facebook')
+      .model('user')
+        .attr('username')
+        .action('create')
+        .action('find')
+          .param('page', 'integer')
+      .model('like');
+    
+    // false
+    adapter('facebook')
+      .model('user').attr('username').action('create')
+      .action('find')
+      .param('page', 'integer')
+      .model('like');
+    ```
+- Keep 1 space between native methods and parentheses (`if`, `while`, `for`, etc.).
+    ```js
+    // true
+    if (x) y();
+
+    // false
+    if(x) y();
+    ```
 - Emit event names in the present tense as `verb [object|property]`:
     ```js
     // true
