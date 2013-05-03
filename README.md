@@ -242,6 +242,25 @@ emit('data');
 
 Maybe `route.on('request')` becomes `route.on('exec')`. And `route.on('connect')` becomes `route.on('open')`.
 
+## Tests
+
+- Use easy to scan/understand syntax for assertions.
+    ```js
+    // true
+    assert(true === val);
+    assert(false === val);
+    assert('foo' === val);
+    assert(undefined === val);
+
+    // false
+    assert.isTrue(val);
+    assert.isFalse(val);
+    assert.equal('foo', val);
+    assert.isUndefined(val);
+    // - should syntax
+    val.should.be(undefined);
+    ```
+
 ## Readme Structure
 
 The basic format is:
