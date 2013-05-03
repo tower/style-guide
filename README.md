@@ -242,6 +242,79 @@ emit('data');
 
 Maybe `route.on('request')` becomes `route.on('exec')`. And `route.on('connect')` becomes `route.on('open')`.
 
+## Readme Structure
+
+The basic format is:
+
+- Title
+- Installation
+- Examples (optional)
+- API
+- Running Tests
+- Notes (optional)
+- License
+
+<pre><code># Title
+
+Quick description (1-2 sentences).
+
+## Installation
+
+node.js:
+
+```
+npm install tower-project
+```
+
+browser:
+
+```
+component install tower/project
+```
+
+## Example
+
+```js
+var project = require('tower-project');
+
+// ...
+```
+
+## API
+
+Optional brief intro.
+
+### .on(event, fn, [capture])
+
+Short description of some method:
+
+```js
+dom('a.remove').on('click', function(e){
+
+});
+```
+
+### .on(event, selector, fn, [capture])
+
+Bind delegate `event` handler function for `selector`:
+
+```js
+dom('ul li').on('click', 'a.remove', function(e){
+
+});
+```
+
+## Notes
+
+This section is optional, but where you'd write whatever, 
+like design decisions, when to use, overview, etc. 
+Here you could go into the theory too (distributed data, etc.).
+
+## Licence
+
+MIT
+</code></pre>
+
 ## Examples
 
 - https://github.com/component/struct/blob/master/index.js
