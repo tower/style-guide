@@ -322,6 +322,28 @@ Maybe `route.on('request')` becomes `route.on('exec')`. And `route.on('connect')
     val.should.be(undefined);
     ```
 
+## Comments
+
+- Here is the general structure of a good comment:
+    ```js
+    /**
+     * Iterate each value and invoke `fn(val, i)`.
+     *
+     *    users.each(function(val, i){
+     *
+     *    });
+     *
+     * @param {Function} fn
+     * @return {Object} self
+     * @api public
+     */
+
+    proto.forEach = function(fn){
+      // ...
+      return this;
+    };
+    ```
+
 ## Readme Structure
 
 The basic format:
