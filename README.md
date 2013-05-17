@@ -16,8 +16,8 @@
 - Define `var` one at a time (don't use leading/trailing commas):
     ```js
     // GOOD
-    var event = require('event')
-    var dom = require('dom')
+    var event = require('event');
+    var dom = require('dom');
     var assert = require('assert');
 
     // BAD
