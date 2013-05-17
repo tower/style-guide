@@ -13,8 +13,62 @@
   ```
 
 ## JavaScript
+- Define `var` one at a time (don't use leading/trailing commas):
+    ```js
+    // GOOD
+    var event = require('event')
+    var dom = require('dom')
+    var assert = require('assert');
+
+    // BAD
+    var event = require('event'),
+        dom = require('dom'),
+        assert = require('assert');
+
+    // BAD
+    var event = require('event')
+      , dom = require('dom')
+      , assert = require('assert');
+    ```
+    While the later two are minimally more optimized, minifiers like uglifyjs will make these optimizations for you. So write what is most human readable.
+- Use trailing commas for multi-line arrays.
+    ```js
+    // GOOD
+    var events = [
+      'click',
+      'keypress',
+      'focusin',
+      'focusout'
+    ];
+
+    // BAD
+    var events = [
+        'click'
+      , 'keypress'
+      , 'focusin'
+      , 'focusout'
+    ];
+    ```
+- Use trailing commas for multi-line objects.
+    ```js
+    // GOOD
+    var styles = {
+      color: '#000',
+      background: '#fff',
+      width: 100,
+      height: 200
+    };
+
+    // BAD
+    var styles = {
+        color: '#000'
+      , background: '#fff'
+      , width: 100
+      , height: 200
+    };
+    ```
 - Always use `"` double quotes when declaring JSON keys and values.
-    ```javascript
+    ```js
     // GOOD
     {
       "myKey": "string",
@@ -29,7 +83,7 @@
     ```
 
 - For strings that are not defined in JSON, default to declaring strings with `'` single quotes. In the case where your string contains special format characters or `'` single quotes, use `"` double quotes.
-    ```javascript
+    ```js
     // GOOD
     var str = '"Marty" is at the party!';
     var specialStr = "im'oto";
@@ -39,7 +93,7 @@
     var specialStr = 'im\'oto';
     ```
 - For assigned functions, have no whitespace between parentheses and brackets: `){` vs. `) {`.
-    ```javascript
+    ```js
     // GOOD
     exports.init = function(){
       this.x;
@@ -52,7 +106,7 @@
     ```
 
 - For callback functions, do the same thing.
-    ```javascript
+    ```js
     // GOOD
     route('/users')
       .on('exec', function(){
@@ -66,7 +120,7 @@
       });
     ```
 - For non-assigned functions, do it the other way around.
-    ```javascript
+    ```js
     // GOOD
     function init() {
       this.x;
@@ -79,7 +133,7 @@
     ```
     This distinguishes the function declarations and function expressions.
 - Indent DSL methods if they are in a new object scope.
-    ```javascript
+    ```js
     // GOOD
     adapter('facebook')
       .model('user')
@@ -97,7 +151,7 @@
       .model('like');      
     ```
 - Keep 1 space between native methods and parentheses (`if`, `while`, `for`, etc.).
-    ```javascript
+    ```js
     // GOOD
     if (x) y();
 
@@ -105,7 +159,7 @@
     if(x) y();
     ```
 - Emit event names in the present tense as `verb [object|property]`.
-    ```javascript
+    ```js
     // GOOD
     this.emit('define', user);
     this.emit('define user', user);
@@ -116,7 +170,7 @@
     this.emit('user define', user);
     ```
 - Emit namespaced events from most generic to most specific. This way, you can mixin more generic stuff first, and use those generic methods on specific objects.
-    ```javascript
+    ```js
     // GOOD
     this.emit('define', user);
     this.emit('define facebook', user);
@@ -128,7 +182,7 @@
     this.emit('define', user);
     ```
 - Pass the `this` as `context` for the first parameter in DSL methods, instead of using `this` as a reference. The context is stated more clearly.
-    ```javascript
+    ```js
     // GOOD
     route('/users')
       .on('request', function(context, next){
@@ -142,7 +196,7 @@
       });
     ```
 - Place the compared value on the left instead of the right. This is unnatural at first, but it makes the code much easier to read for a newcomer.
-    ```javascript
+    ```js
     // GOOD
     if ('string' === typeof(x))
       exec();
@@ -153,20 +207,20 @@
     ```
     The reason for this is, the compared-to value (e.g. `'string'`) is first, so it reads `if ('string') exec()`.
 - Leave 1 empty line at the **top* of each file.
-    ```javascript
+    ```js
     \n
     /**
      * Blank line above.
      */
     ```
-    ```javascript
+    ```js
     /**
      * No blank line above
      */
     ```
 - Leave 0 empty lines at the **bottom** of each file.
 - Leave 1 blank line between comments and code.
-    ```javascript
+    ```js
     /**
      * GOOD
      */
@@ -175,7 +229,7 @@
 
     };
     ```
-    ```javascript
+    ```js
     /**
      * BAD
      */
@@ -186,7 +240,7 @@
 
 - For loops should be as efficient and clean as possible.
 
-   ```javascript
+   ```js
    // GOOD
    for (var i = 0, n = arr.length; i < n; i++) {}
 
@@ -195,7 +249,7 @@
    ```
 
    Single letter variables should only be used within loops (basically for loops).
-  ```javascript
+  ```js
    // GOOD
    for (var i = 0, n = arr.length; i < n; i++) {}
 
@@ -205,7 +259,7 @@
 
 - For each loops (for loops but with objects) should have safe guards, which is a general good JavaScript practice.
   
-   ```javascript
+   ```js
    // GOOD
    for (var key in obj) {
      if (obj.hasOwnProperty(key)) {
@@ -219,7 +273,7 @@
    }
    ```
 - Use `obj.init()` instead of `new Obj`, where `obj.create()` should do some db/service call.
-    ```javascript
+    ```js
     // GOOD
     var newObj = obj.init();
 
@@ -227,7 +281,7 @@
     var newObj = new Obj();
     ```
 - For single-line arrays and objects, put one space before/after containing brackets.
-    ```javascript
+    ```js
     // GOOD
     [ 'i386', 'x86_64' ]
     { status: 'active' }
@@ -237,7 +291,7 @@
     {status: 'active'}
     ```
 - Avoid aligning signs such as `=`, `:`, etc. The reason is, while it does create some symmetry, it makes the code a little harder to read.
-    ```javascript
+    ```js
     // GOOD
     var x = 1;
     var foo = 'bar';
@@ -249,7 +303,7 @@
     var hello = 'world';
     ```
 - If a ternary statement is too long, put it on multiple lines with `?` and `:` at the start of the line.
-    ```javascript
+    ```js
     // GOOD
     exports.query = function(name){
       return null == name
@@ -265,7 +319,7 @@
     }
     ```    
 - If you are building a multiline string, use `+` at the beginning of the line.
-    ```javascript
+    ```js
     // GOOD
     var string = 'some '
       + 'long '
@@ -287,7 +341,7 @@
 
 These are all of the events used in Tower. When creating custom APIs, see if these events can be used before defining another. Maybe we can even cut it down.
 
-```javascript
+```js
 emit('define');
 emit('init');
 emit('exec');
@@ -306,7 +360,7 @@ Maybe `route.on('request')` becomes `route.on('exec')`. And `route.on('connect')
 ## Tests
 
 - Use easy to scan/understand syntax for assertions.
-    ```javascript
+    ```js
     // GOOD
     assert(true === val);
     assert(false === val);
@@ -377,7 +431,7 @@ component install tower/project
 
 ## Example
 
-```javascript
+```js
 var project = require('tower-project');
 
 // ...
@@ -391,7 +445,7 @@ Optional brief intro.
 
 Short description of some method:
 
-```javascript
+```js
 dom('a.remove').on('click', function(e){
 
 });
@@ -401,7 +455,7 @@ dom('a.remove').on('click', function(e){
 
 Bind delegate `event` handler function for `selector`:
 
-```javascript
+```js
 dom('ul li').on('click', 'a.remove', function(e){
 
 });
