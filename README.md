@@ -2,14 +2,21 @@
 
 ## General Documentation Semantics
 
-- Do not use contractions.
+- Write in a conversational style.
+  - Use pronouns: _I, we, you, they_.
+  - Use colloquial expressions: _a sure thing, turn-on, rip-off, OK_.
+  - Use contractions: _they're, you're, it's, here's, we've, I'm_.
+  - Use simple words.
+  - If you must choose between writing naturally and being grammatically correct, write naturally.
 
   ```
   // GOOD
-  I am going home.
+  I'm going home.
+  It's simple.
 
   // BAD
-  I'm going home. 
+  I am going home.
+  I is simple.
   ```
 
 ## JavaScript
