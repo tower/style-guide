@@ -10,11 +10,11 @@
   - If you must choose between writing naturally and being grammatically correct, write naturally.
 
   ```
-  // GOOD
+  // yay
   I'm going home.
   It's simple.
 
-  // BAD
+  // nay
   I am going home.
   I is simple.
   ```
@@ -22,17 +22,17 @@
 ## JavaScript
 - Define `var` one at a time (don't use leading/trailing commas):
     ```js
-    // GOOD
+    // yay
     var event = require('event');
     var dom = require('dom');
     var assert = require('assert');
 
-    // BAD
+    // nay
     var event = require('event'),
         dom = require('dom'),
         assert = require('assert');
 
-    // BAD
+    // nay
     var event = require('event')
       , dom = require('dom')
       , assert = require('assert');
@@ -40,7 +40,7 @@
     While the later two are minimally more optimized, minifiers like uglifyjs will make these optimizations for you. So write what is most human readable.
 - Use trailing commas for multi-line arrays.
     ```js
-    // GOOD
+    // yay
     var events = [
       'click',
       'keypress',
@@ -48,7 +48,7 @@
       'focusout'
     ];
 
-    // BAD
+    // nay
     var events = [
         'click'
       , 'keypress'
@@ -58,7 +58,7 @@
     ```
 - Use trailing commas for multi-line objects.
     ```js
-    // GOOD
+    // yay
     var styles = {
       color: '#000',
       background: '#fff',
@@ -66,7 +66,7 @@
       height: 200
     };
 
-    // BAD
+    // nay
     var styles = {
         color: '#000'
       , background: '#fff'
@@ -76,13 +76,13 @@
     ```
 - Always use `"` double quotes when declaring JSON keys and values.
     ```js
-    // GOOD
+    // yay
     {
       "myKey": "string",
       "myArray": ["some stuff", "more stuff"]
     }
    
-    // BAD
+    // nay
     {
       myKey: 'string',
       'myArray': ['some stuff', 'more stuff']
@@ -91,22 +91,22 @@
 
 - For strings that are not defined in JSON, default to declaring strings with `'` single quotes. In the case where your string contains special format characters or `'` single quotes, use `"` double quotes.
     ```js
-    // GOOD
+    // yay
     var str = '"Marty" is at the party!';
     var specialStr = "im'oto";
 
-    // BAD
+    // nay
     var str = "\"Marty\" is at the party!";
     var specialStr = 'im\'oto';
     ```
 - For assigned functions, have no whitespace between parentheses and brackets: `){` vs. `) {`.
     ```js
-    // GOOD
+    // yay
     exports.init = function(){
       this.x;
     };
     
-    // BAD
+    // nay
     exports.init = function() {
       this.x;
     };
@@ -114,13 +114,13 @@
 
 - For callback functions, do the same thing.
     ```js
-    // GOOD
+    // yay
     route('/users')
       .on('exec', function(){
 
       });
     
-    // BAD
+    // nay
     route('/users')
       .on('exec', function() {
 
@@ -128,12 +128,12 @@
     ```
 - For non-assigned functions, do it the other way around.
     ```js
-    // GOOD
+    // yay
     function init() {
       this.x;
     };
     
-    // BAD
+    // nay
     function init(){
       this.x;
     };
@@ -141,7 +141,7 @@
     This distinguishes the function declarations and function expressions.
 - Indent DSL methods if they are in a new object scope.
     ```js
-    // GOOD
+    // yay
     adapter('facebook')
       .model('user')
         .attr('username')
@@ -150,7 +150,7 @@
           .param('page', 'integer')
       .model('like');
     
-    // BAD
+    // nay
     adapter('facebook')
       .model('user').attr('username').action('create')
       .action('find')
@@ -159,44 +159,44 @@
     ```
 - Keep 1 space between native methods and parentheses (`if`, `while`, `for`, etc.).
     ```js
-    // GOOD
+    // yay
     if (x) y();
 
-    // BAD
+    // nay
     if(x) y();
     ```
 - Emit event names in the present tense as `verb [object|property]`.
     ```js
-    // GOOD
+    // yay
     this.emit('define', user);
     this.emit('define user', user);
     
-    // BAD
+    // nay
     this.emit('defined user', user);
     this.emit('user defined', user);
     this.emit('user define', user);
     ```
 - Emit namespaced events from most generic to most specific. This way, you can mixin more generic stuff first, and use those generic methods on specific objects.
     ```js
-    // GOOD
+    // yay
     this.emit('define', user);
     this.emit('define facebook', user);
     this.emit('define facebook.user', user);
     
-    // BAD
+    // nay
     this.emit('define facebook.user', user);
     this.emit('define facebook', user);
     this.emit('define', user);
     ```
 - Pass the `this` as `context` for the first parameter in DSL methods, instead of using `this` as a reference. The context is stated more clearly.
     ```js
-    // GOOD
+    // yay
     route('/users')
       .on('request', function(context, next){
         context.render();
       });
 
-    // BAD
+    // nay
     route('/users')
       .on('request', function(next){
         this.render();
@@ -204,11 +204,11 @@
     ```
 - Place the compared value on the left instead of the right. This is unnatural at first, but it makes the code much easier to read for a newcomer.
     ```js
-    // GOOD
+    // yay
     if ('string' === typeof(x))
       exec();
 
-    // BAD
+    // nay
     if (typeof(x) === 'string')
       exec();
     ```
@@ -248,77 +248,77 @@
 - For loops should be as efficient and clean as possible.
 
    ```js
-   // GOOD
+   // yay
    for (var i = 0, n = arr.length; i < n; i++) {}
 
-   // BAD
+   // nay
    for (var i = 0; i < arr.length; i++) {}
    ```
 
    Single letter variables should only be used within loops (basically for loops).
   ```js
-   // GOOD
+   // yay
    for (var i = 0, n = arr.length; i < n; i++) {}
 
-   // BAD
+   // nay
    for (var index = 0, size = arr.length; index < size; index++) {}
    ```
 
 - For each loops (for loops but with objects) should have safe guards, which is a general good JavaScript practice.
   
    ```js
-   // GOOD
+   // yay
    for (var key in obj) {
      if (obj.hasOwnProperty(key)) {
        delete obj[key];
      }
    }
 
-   // BAD   
+   // nay   
    for (var key in obj) {
      delete obj[key];
    }
    ```
 - Use `obj.init()` instead of `new Obj`, where `obj.create()` should do some db/service call.
     ```js
-    // GOOD
+    // yay
     var newObj = obj.init();
 
-    // BAD
+    // nay
     var newObj = new Obj();
     ```
 - For single-line arrays and objects, put one space before/after containing brackets.
     ```js
-    // GOOD
+    // yay
     [ 'i386', 'x86_64' ]
     { status: 'active' }
 
-    // BAD
+    // nay
     ['i386', 'x86_64']
     {status: 'active'}
     ```
 - Avoid aligning signs such as `=`, `:`, etc. The reason is, while it does create some symmetry, it makes the code a little harder to read.
     ```js
-    // GOOD
+    // yay
     var x = 1;
     var foo = 'bar';
     var hello = 'world';
 
-    // BAD
+    // nay
     var x     = 1;
     var foo   = 'bar';
     var hello = 'world';
     ```
 - If a ternary statement is too long, put it on multiple lines with `?` and `:` at the start of the line.
     ```js
-    // GOOD
+    // yay
     exports.query = function(name){
       return null == name
         ? query().start(this.className)
         : query(name);
     }
 
-    // BAD
+    // nay
     exports.query = function(name){
       return null == name ?
         query().start(this.className) :
@@ -327,22 +327,34 @@
     ```    
 - If you are building a multiline string, use `+` at the beginning of the line.
     ```js
-    // GOOD
+    // yay
     var string = 'some '
       + 'long '
       + 'string ';
 
-    // BAD
+    // nay
     var string = 'some ' +
       'long ' +
       'string ';
 
-    // BAD
+    // nay
     var string = 'some \
       long \
       string ';
     ```
     In EcmaScript 6, you'll be able to use [backticks for multi-line strings](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml?showone=Multiline_string_literals#Multiline_string_literals).
+
+## Repos
+
+- Name your projects using lowercase with hyphens.
+    ```js
+    // yay
+    var myProject = require('my-project');
+
+    // nay
+    var myProject = require('myProject');
+    var myProject = require('MyProject');
+    ```
 
 ## Events
 
@@ -368,13 +380,13 @@ Maybe `route.on('request')` becomes `route.on('exec')`. And `route.on('connect')
 
 - Use easy to scan/understand syntax for assertions.
     ```js
-    // GOOD
+    // yay
     assert(true === val);
     assert(false === val);
     assert('foo' === val);
     assert(undefined === val);
 
-    // BAD
+    // nay
     assert.isTrue(val);
     assert.isFalse(val);
     assert.equal('foo', val);
