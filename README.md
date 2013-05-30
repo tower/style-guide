@@ -16,7 +16,7 @@
 
   // nay
   I am going home.
-  I is simple.
+  It is simple.
   ```
 
 ## JavaScript
