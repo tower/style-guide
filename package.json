@@ -1,5 +1,9 @@
 {
   "name": "tower-style-guide",
   "version": "0.0.1",
-  "main": "./index.js"
+  "main": "./index.js",
+  "repository": {
+    "type" : "git",
+    "url" : "http://github.com/tower/style-guide.git"
+  }
 }
